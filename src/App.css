@@ -281,10 +281,13 @@ html {
 h1,
 h2,
 h3,
-i {
+i,
+button,
+.loginPrompt {
   color: #6F204D;
   font-family: 'Questrial', sans-serif;
   text-transform: uppercase;
+  text-align: center;
 }
 
 h1 {
@@ -298,9 +301,65 @@ h3 {
   margin: 20px;
 }
 
-/* APP STYLES */
+.loginPrompt {
+  font-size: 1.5rem;
+  margin: 10px;
+}
 
+/* SIGN IN STYLES */
 
+.signIn {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signInHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginBox form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 500px;
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, .35);
+}
+
+#username,
+#password {
+  margin: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, .35);
+}
+
+button {
+  cursor: pointer;
+  width: 150px;
+  border: 2px solid #6F204D;
+  border-radius: 20px;
+  background: #FFB84C;
+  padding: 10px;
+}
+
+/* MAIN APP STYLES */
 
 header {
   margin: 15px;

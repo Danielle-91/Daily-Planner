@@ -1,4 +1,5 @@
 import './App.css';
+import SignIn from './components/SignIn';
 import Header from './components/Header';
 import TopPriorities from './components/notepads/TopPriorities';
 import Reminders from './components/notepads/Reminders';
@@ -9,6 +10,8 @@ function App() {
   return (
 
     <div className="wrapper">
+      <SignIn />
+      
       <header>
         <Header />
       </header>

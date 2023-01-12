@@ -7,8 +7,8 @@ function Header(){
 
             <div className="menu">
                 <nav>
-                <i class="fa-solid fa-bars"></i>
-            </nav>
+                    <i class="fa-solid fa-plus"></i>
+                </nav>
             </div>
             
             <div>
