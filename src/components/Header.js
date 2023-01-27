@@ -1,4 +1,10 @@
+
+
 function Header(){
+
+    const handleClick = () => {
+        sessionStorage.clear();
+    }
 
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
@@ -18,6 +24,8 @@ function Header(){
             <div className="date">
                 <h3>Date: {date}</h3>
             </div>
+
+            <button onClick={handleClick}>Sign Out</button>
 
         </>
     )
