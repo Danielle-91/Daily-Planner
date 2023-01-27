@@ -1,15 +1,28 @@
 import { useState } from "react";
+import { PropTypes } from "prop-types";
 
-function SignIn(props) {
+async function signInUser(credentials){
+    return fetch('http://localhost:8080/signin', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+    })
+    .then(data => data.json())
+}
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const validateForm = () => {
-        return email.length > 0 && password.length > 0;
-    }
+function SignIn({ setToken }) {
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
 
-    const handleSubmit = (e) =>{
-        e.preventDefault()
+    const handleSubmit = async e => {
+        e.preventDefault();
+        const token = await signInUser({
+            email,
+            password
+        });
+        setToken(token)
     }
     
     return (
@@ -27,7 +40,6 @@ function SignIn(props) {
                             id="email"
                             name="email"
                             placeholder="Email"
-                            value={email}
                             onChange={(e) => setEmail(e.target.value)}/>
 
                         <label htmlFor="password" className="sr-only">Enter your password:</label>
@@ -35,10 +47,9 @@ function SignIn(props) {
                             id="password"
                             name="password"
                             placeholder="Password"
-                            value={password}
                             onChange={(e) => setPassword(e.target.value)}/>
 
-                        <button type="submit" disabled={!validateForm()}>Log In</button>
+                        <button type="submit">Sign In</button>
                     </form>
 
                 </div>
@@ -47,6 +58,10 @@ function SignIn(props) {
 
         </>
     )
+
+}
+SignIn.propTypes = {
+    setToken: PropTypes.func.isRequired
 }
 
 export default SignIn;
