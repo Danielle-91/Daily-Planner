@@ -1,35 +1,33 @@
 import './App.css';
+import { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SignIn from './components/SignIn';
-import Header from './components/Header';
-import TopPriorities from './components/notepads/TopPriorities';
-import Reminders from './components/notepads/Reminders';
-import ToDo from './components/notepads/ToDo';
-import Notes from './components/notepads/Notes';
+import Planner from './components/notepads/Planner';
 
 function App() {
+
+  const [token, setToken] = useState();
+
+  // Display Sign In page if user not signed in
+  if(!token){
+    return <SignIn setToken={setToken} />
+  }
+
+
   return (
 
     <div className="wrapper">
-      <SignIn />
-      
-      <header>
-        <Header />
-      </header>
+      <BrowserRouter>
 
-      <section className='notepad'>
-        <TopPriorities />
+        <Routes>
+          <Route path="/signin" element={<SignIn />} />
 
-        <Reminders />
+          <Route path="/planner" element={<Planner />} />
+        </Routes>
 
-        <ToDo />
-
-        <Notes />
-      </section>
+      </BrowserRouter>
     </div>
-    
-
-    
-  );
+  )
 }
 
 export default App;
