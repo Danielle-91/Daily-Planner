@@ -361,11 +361,24 @@ button {
 
 /* MAIN APP STYLES */
 
+/* Header */
+
 header {
   margin: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.toggle {
+  z-index: 101;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 77px;
+  left: 17px;
+  cursor: pointer;
+  opacity: 0;
 }
 
 .fa-solid {
@@ -377,6 +390,53 @@ header {
   border-radius: 30px 30px 0 30px;
 }
 
+/* Add Item Module */
+
+.template {
+  border: 5px solid #6F204D;
+  border-radius: 30px;
+  background: white;
+  width: 650px;
+  height: 400px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  margin: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.categories {
+  border: 2px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  /* align-items: center; */
+  margin: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+.left,
+.right {
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+/* App Body */
 .notepad {
   margin: 30px;
   display: grid;
