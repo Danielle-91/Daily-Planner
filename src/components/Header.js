@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import NewItemModule from "./UI/NewItemModule";
 
@@ -10,15 +11,26 @@ function Header() {
 
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+    const handleTemplate = (e) => {
+        setShowTemplate(!showTemplate)
+    }
+
+
     return (
         <>
 
+        {showTemplate === true ?
+        <NewItemModule
+        handleTemplate={handleTemplate}
+        /> :
+        null
+}
             <input type="checkbox" className="toggle"/>
             <div className="listBtn">
-                <i class="fa-solid fa-plus"></i>
+                <button onClick={handleTemplate}><i className="fa-solid fa-plus"></i></button>
             </div>
 
-            <NewItemModule />
+            {/* <NewItemModule /> */}
 
             <div>
                 <h1>Daily Planner 1</h1>
