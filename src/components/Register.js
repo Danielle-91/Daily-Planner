@@ -1,37 +1,44 @@
-import React, { useState } from 'react'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { useState } from 'react'
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import {auth} from '../firebase';
 
 const Register = () => {
-    const [form, setForm] = useState({
-        email: '',
-        password: ''
-    })
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleSubmit = console.log('submitted');
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     // await register(form);
+    const handleRegister = (e) => {
+        e.preventDefault();
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredentials) => {
+            console.log(userCredentials)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
 
-    // }
 
     return (
         <div>
             <h1>Register</h1>
-            <form onSubmit={handleSubmit} >
-                <label for="email">Email</label>
-                <input type="text"
-                    placeholder="email" id="mail"
-                    onChange={(e) =>
-                        setForm({ ...form, email: e.target.value })} />
-                <br />
-                <label for="password">Password</label>
-                <input type="password" placeholder="Password"
-                    onChange={(e) =>
-                        setForm({ ...form, password: e.target.value })} />
-                <br />
-                <button type="submit">
-                    Submit
-                </button>
+            <form onSubmit={handleRegister} >
+                <label htmlFor="logIn" className="loginPrompt">Create Your Account</label>
+                <label htmlFor="email" className="sr-only">Enter your email:</label>
+                <input type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+
+                <label htmlFor="password" className="sr-only">Enter your password:</label>
+                <input type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+
+                />
+                <button type="submit">Submit</button>
             </form>
         </div>
 
