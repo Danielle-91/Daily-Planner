@@ -1,17 +1,24 @@
-import { initializeApp } from 'firebase/app';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Initialize Firebase
-// *** USE YOUR CONFIG OBJECT ***
-const config = {
-    apiKey: "YOUR-API-KET",
-    authDomain: "daily-planner-8f7a7.firebaseapp.com",
-    databaseURL: "https://daily-planner-8f7a7-default-rtdb.firebaseio.com/",
-    projectId: "daily-planner-8f7a7",
-    storageBucket: "daily-planner-8f7a7.appspot.com",
-    messagingSenderId: "548100999451"
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyAzAOAQVZCHSbjauyJNaJxw7IMYqS-_5VQ",
+    authDomain: "daily-planner-88e12.firebaseapp.com",
+    databaseURL: "https://daily-planner-88e12-default-rtdb.firebaseio.com",
+    projectId: "daily-planner-88e12",
+    storageBucket: "daily-planner-88e12.appspot.com",
+    messagingSenderId: "395185995384",
+    appId: "1:395185995384:web:fcf32a3dc6779ecd60b78d"
 };
 
-// setting a variable that initializes our application
-const firebase = initializeApp(config);
-// this exports the CONFIGURED version of firebase
-export default firebase;
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase Authentication and get a reference to the service
+const auth = getAuth(app);
+
+export { firebaseConfig, auth };

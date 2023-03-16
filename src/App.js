@@ -1,17 +1,12 @@
-import firebase from './firebase';
+
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SignIn from './components/SignIn';
 import Planner from './components/Planner';
-import UseToken from './components/UseToken';
+import Register from './components/Register';
 
 function App() {
-  const { token, setToken } = UseToken();  
-  // Display Sign In page if user not signed in
-  if(!token){
-    return <SignIn setToken={setToken} />
-  }
-
+  // const { token, setToken } = UseToken();  
 
   return (
 
@@ -20,7 +15,8 @@ function App() {
 
         <Routes>
           <Route path="/planner" element={<Planner />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route path="/" element={<SignIn />} />
+          <Route path="/register" element={<Register />}></Route>
 
         </Routes>
 
