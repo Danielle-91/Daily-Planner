@@ -2,6 +2,7 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 import { useState, useEffect } from "react";
 import Header from "./Header";
 import NewItemModule from "./UI/NewItemModule";
+import Auth from './Auth';
 
 function Planner(props) {
 
@@ -36,6 +37,7 @@ function Planner(props) {
         <>
             <header>
                 <Header />
+                <Auth />
             </header>
 
             <section className='notepad'>
