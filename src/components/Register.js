@@ -20,7 +20,8 @@ const Register = () => {
     return (
         <div>
             <h1>Register</h1>
-            <form onSubmit={handleRegister} >
+            <div className="formBox">
+                <form onSubmit={handleRegister} >
                 <label htmlFor="logIn" className="loginPrompt">Create Your Account</label>
                 <label htmlFor="email" className="sr-only">Enter your email:</label>
                 <input type="email"
@@ -40,6 +41,8 @@ const Register = () => {
                 />
                 <button type="submit">Submit</button>
             </form>
+            </div>
+            
         </div>
 
     )

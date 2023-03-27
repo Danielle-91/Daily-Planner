@@ -323,14 +323,14 @@ h3 {
   align-items: center;
 }
 
-.loginBox {
+.formBox {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.loginBox form {
+.formBox form {
   display: flex;
   flex-direction: column;
   justify-content: center;

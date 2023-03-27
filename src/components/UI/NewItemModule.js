@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getDatabase, ref, onValue } from 'firebase/database';
+import {firebase} from '../../firebase';
 
-
+// every time user is created a node is created with ID
+// when user signs in, a key is associated w them
+// when user is stored, save object for individual person
+// break down to notebooks
+// when user adds to database
 function NewItemModule(props) {
 
     const [enteredTask, setEnteredTask] = useState('');
@@ -10,26 +15,16 @@ function NewItemModule(props) {
         setEnteredTask(e.target.value)
     }
     
-    // const handleSubmit = (e) => {
-    //     console.log(enteredTask)
-    //     e.preventDefault();
-    //     // const newTask = {enteredTask}
-    //     // setEnteredTask('');
-    //     // create a reference to our database
-    //     const database = getDatabase(firebase);
-    //     const dbRef = ref(database);
-
-    //     // push the value of the `userInput` state to the database
-    //     push(dbRef, enteredTask);
-
-    //     // reset the state to an empty string
-    //     setEnteredTask('');
-    // }
 
     const prioritiesBtn = (e) => {
         console.log('priorities')
     }
 
+    // look at docs
+
+    // click to add, see 4 options, when user clicks reminder e.g., showcases the form
+    // if reminder selected, show that form, scope on function to it
+    // typepOfTask = db.filter(reminders) or something
     const remindersBtn = (e) => {
         // setEnteredTask(e.target.value)
         // event.preventDefault prevents the default action (form submission and page refresh)
@@ -51,19 +46,7 @@ function NewItemModule(props) {
         <>
             <div className="template">
                 <div className="addItem">
-                    <form action="" name="newItem">
-                        {/* <button onClick={props.handleTemplate}><i class="fa-solid fa-x"></i></button> */}
-                        <label htmlFor="newItem">What's on the Agenda?</label>
-                        <input type="text" id="task" name="task" value={enteredTask} onChange={handleNewTask} />
-
-                        <div className="catBtns">
-                            <button type="submit" onClick={prioritiesBtn}>Top Priorities</button
-                            ><button type="submit">Reminders</button>
-                            <button type="submit" onClick={notesBtn}>Notes</button>
-                            <button type="submit" onClick={todoBtn}>To Do</button>
-                        </div>
-
-                    </form>
+                    
                 </div>
             </div>
 
