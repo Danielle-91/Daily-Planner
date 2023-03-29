@@ -10,6 +10,8 @@ function TopPriorities() {
     const [priorities, setPriorities] = useState([])
     const [showTemplate, setShowTemplate] = useState(false);
 
+    const timestamp = Date.now();
+
     const handleTemplate = (e) => {
         setShowTemplate(!showTemplate)
     }
@@ -17,6 +19,7 @@ function TopPriorities() {
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             if (user) {
+                console.log(user)
                 onValue(ref(db, `/${auth.currentUser.uid}`), snapshot => {
                     setPriorities([]);
                     const data = snapshot.val();
@@ -32,7 +35,9 @@ function TopPriorities() {
 
     const createNewTask = (e) => {
         e.preventDefault();
-        const uidd = uid();
+        let index = 0;
+        // input tasks were displaying out of order; to fix this, I changed the generated node ID to the current time in milliseconds so it would always be in order
+        const uidd = timestamp;
 
         if (newTask === "") {
             alert('please enter a valid task')
@@ -40,10 +45,11 @@ function TopPriorities() {
 
         set(ref(db, `${auth.currentUser.uid}/${uidd}`), {
             newTask: newTask,
-            uidd: uidd,
-    })
+            
+        })
 
         setNewTask("");
+        console.log(index, newTask)
     }
 
     const handleChange = (e) => {
@@ -86,7 +92,7 @@ function TopPriorities() {
                 {
                     priorities.map((priority) => (
                         <ul>
-                            <li key={newTask.uidd}>{priority.newTask}</li>
+                            <li>{priority.newTask}</li>
                         </ul>
                     ))
                 }
