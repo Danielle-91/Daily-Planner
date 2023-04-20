@@ -9,8 +9,6 @@ import Notes from './notepads/Notes';
 
 function Planner(props) {
 
-    const [tasks, setTasks] = useState([])
-
     return (
         <>
             <header>

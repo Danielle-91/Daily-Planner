@@ -283,7 +283,7 @@ h2,
 h3,
 i,
 button,
-.loginPrompt {
+label {
   color: #6F204D;
   font-family: 'Questrial', sans-serif;
   text-transform: uppercase;
@@ -301,7 +301,7 @@ h3 {
   margin: 20px;
 }
 
-.loginPrompt {
+label {
   font-size: 1.5rem;
   margin: 10px;
 }
@@ -342,8 +342,7 @@ h3 {
   box-shadow: 0px 0px 25px rgba(0, 0, 0, .35);
 }
 
-#email,
-#password {
+input {
   margin: 15px;
   padding: 10px;
   border: none;
@@ -401,8 +400,8 @@ header {
   border: 5px solid #6F204D;
   border-radius: 30px;
   background: white;
-  width: 650px;
-  height: 400px;
+  width: 643px;
+  height: 340px;
   position: absolute;
   left: 0;
   right: 0;
@@ -414,10 +413,12 @@ header {
 }
 
 .addItem {
-  border: 2px solid red;
   display: flex;
   justify-content: space-between;
-  height: 100%;
+  height: 80%;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 37px;
 }
 
 form {
@@ -473,7 +474,3 @@ form {
   grid-row-start: 1;
   grid-row-end: 3;
 }
-
-/* .titleFlex {
-  display: flex;
-} */
