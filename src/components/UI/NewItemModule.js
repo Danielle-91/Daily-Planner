@@ -13,7 +13,9 @@ import { firebase } from '../../firebase';
 // if reminder selected, show that form, scope on function to it
 // typepOfTask = db.filter(reminders) or something
 
-function NewItemModule(props) {
+// newTask in here maybe needs changing? if goes to priorities, newPri or something like that
+
+function NewItemModule({handleTemplate, newTask, handleChange, createNewTask}) {
 
     return (
         <>
@@ -26,11 +28,12 @@ function NewItemModule(props) {
                         <input type="text"
                             id="task"
                             name="task"
-                            value={props.newTask}
-                            onChange={props.handleChange}
-                            required/>
+                            value={newTask}
+                            onChange={handleChange}
+                            required
+                            />
 
-                        <button type="submit" onClick={props.createNewTask}>Add</button>
+                        <button type="submit" onClick={createNewTask}>Add</button>
                     </form>
                 </div>
 

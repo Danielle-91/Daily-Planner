@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { uid } from 'uid';
 import { onAuthStateChanged } from 'firebase/auth';
-import { set, ref, onValue } from 'firebase/database';
-import { auth, db } from '../../firebase';
+import { set, push, ref, onValue } from 'firebase/database';
+import { auth, db, priRef } from '../../firebase';
 import NewItemModule from '../UI/NewItemModule';
+
+// onClick = {(e) => console.log(e.target.id)}-> use this syntax later when deleting/editing tasks to select the whole item not just the input******
 
 function TopPriorities() {
 
-    const [newTask, setNewTask] = useState("");
+    const [newPri, setNewPri] = useState("");
     const [priorities, setPriorities] = useState([])
     const [showTemplate, setShowTemplate] = useState(false);
-
-    const timestamp = Date.now();
 
     const handleTemplate = (e) => {
         setShowTemplate(!showTemplate)
@@ -20,13 +20,18 @@ function TopPriorities() {
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             if (user) {
-                onValue(ref(db, `/${auth.currentUser.uid}`), snapshot => {
-                    setPriorities([]);
+                onValue(ref(db, priRef), snapshot => {
+                    console.log(snapshot.val())
                     const data = snapshot.val();
                     if (data !== null) {
-                        Object.values(data).map(newTask => {
-                            setPriorities((oldArray) => [...oldArray, newTask])
-                        })
+                        let newPriorities = [];
+                        for(let item in data){
+                            newPriorities.push({
+                                key: item,
+                                task: data[item]
+                            })
+                        } 
+                        setPriorities(newPriorities)
                     }
                 })
             }
@@ -35,26 +40,23 @@ function TopPriorities() {
 
     const createNewTask = (e) => {
         e.preventDefault();
-        // input tasks were displaying out of order bc Firebase was storing them in order based on the UID; to fix this, I changed the ID from a UID to the current time in milliseconds so it would always be in order
-        const cat = "topPri";
-        const taskID = timestamp;
 
-        if (newTask === "") {
+        if (newPri === "") {
             alert('please enter a valid task')
+            
         }
 
-        set(ref(db, `${auth.currentUser.uid}/${taskID}`), {
-            newTask: newTask,
-            // taskID: taskID
-        })
+        push(ref(db, priRef), 
+            newPri
+        )
 
-        setNewTask("");
+        setNewPri("");
 
         handleTemplate();
     }
 
     const handleChange = (e) => {
-        setNewTask(e.target.value)
+        setNewPri(e.target.value)
     }
 
     return (
@@ -71,7 +73,7 @@ function TopPriorities() {
             {showTemplate === true ?
 
                 <NewItemModule 
-                newTask={newTask}
+                newTask={newPri}
                 handleChange={handleChange}
                 createNewTask={createNewTask}/>
                 :
@@ -79,13 +81,13 @@ function TopPriorities() {
             }
 
             <div className="taskList">
+                <ul>
                 {
                     priorities.map((priority) => (
-                        <ul>
-                            <li>{priority.newTask}</li>
-                        </ul>
+                            <li id={priority.key}>{priority.task}</li>
                     ))
                 }
+                </ul>
             </div>
 
         </div>
