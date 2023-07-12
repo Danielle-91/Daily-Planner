@@ -363,6 +363,11 @@ button {
   border: none;
 }
 
+.addBtn button {
+  width: 0;
+  padding: 0;
+}
+
 /* MAIN APP STYLES */
 
 /* Header */
@@ -441,6 +446,7 @@ form {
 }
 
 .titleFlex {
+  border: 2px solid red;
   display: flex;
   justify-content: space-evenly;
   text-align: center;
@@ -452,6 +458,10 @@ form {
   padding: 20px;
 }
 
+/* .titleLayout {
+  width: 50%;
+} */
+
 .priorities,
 .notes,
 .reminders,
@@ -461,6 +471,7 @@ form {
   background-size: 100% 2.3rem;
   border: 5px solid #6F204D;
   border-radius: 30px;
+  display: grid;
 }
 
 .notes {

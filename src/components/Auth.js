@@ -1,9 +1,13 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth } from "../firebase";
+import { useNavigate } from 'react-router-dom';
+
 
 const Auth = () => {
     const [authUser, setAuthUser] = useState(null);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         const listen = onAuthStateChanged(auth, (user) => {
@@ -22,7 +26,8 @@ const Auth = () => {
 
     const userSignOut = () => {
         signOut(auth).then(() => {
-            console.log('user signed out');
+            navigate('/')
+
         }).catch(error => console.log(error))
     }
 

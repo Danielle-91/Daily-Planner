@@ -57,7 +57,7 @@ function Reminders() {
 
     return (
 
-        <div className="priorities">
+        <div className="reminders">
             <div className="titleFlex">
                 <h2>Reminders</h2>
 

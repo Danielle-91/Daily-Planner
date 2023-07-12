@@ -61,7 +61,7 @@ function Notes() {
 
     return (
 
-        <div className="priorities">
+        <div className="notes">
             <div className="titleFlex">
                 <h2>Notes</h2>
 

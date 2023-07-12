@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loginError, setLoginError] = useState(false);
     const navigate = useNavigate();
 
     const handleSignIn = (e) => {
@@ -16,7 +17,7 @@ function SignIn() {
             console.log(userCredentials);
             navigate('/planner')
         }).catch((error) => {
-            console.log(error)
+            setLoginError(true)
         })
     }
     
@@ -49,6 +50,8 @@ function SignIn() {
 
                         <button type="submit">Sign In</button>
                     </form>
+
+                    {loginError && <span>Incorrect username or password!</span>}
 
                     <p>Don't have an account? <Link to='/register'>Register here</Link></p>
 

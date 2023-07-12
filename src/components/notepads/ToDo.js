@@ -61,7 +61,7 @@ function ToDo() {
 
     return (
 
-        <div className="priorities">
+        <div className="todo">
             <div className="titleFlex">
                 <h2>To Do</h2>
 

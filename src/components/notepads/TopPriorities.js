@@ -63,10 +63,13 @@ function TopPriorities() {
 
         <div className="priorities">
             <div className="titleFlex">
-                <h2>Top Priorities</h2>
+                {/* <div className="titleLayout"> */}
 
-                <input type="checkbox" className="toggle" />
-                <button className='addBtn' onClick={handleTemplate}><i className="fa-solid fa-plus"></i></button>
+                    <h2>Top Priorities</h2>
+
+                    <input type="checkbox" className="toggle" />
+                    <button className='addBtn' onClick={handleTemplate}><i className="fa-solid fa-plus"></i></button>
+                {/* </div> */}
             </div>
 
 

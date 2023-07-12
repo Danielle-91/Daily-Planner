@@ -7,6 +7,7 @@ import Reminders from './notepads/Reminders';
 import ToDo from './notepads/ToDo';
 import Notes from './notepads/Notes';
 
+
 function Planner(props) {
 
     return (
